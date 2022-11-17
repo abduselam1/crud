@@ -40,7 +40,7 @@ if (count($_POST) != 2) {
             if (hashCheck($password, $userInfo['password'])) {
                 $_SESSION['id'] = $userInfo['id'];
                 $_SESSION['authenticated'] = true;
-                header("location:crud/pages/home");
+                header("location:/crud/pages/home");
             } else {
                 echo "Password doen't match";
             }

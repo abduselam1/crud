@@ -15,7 +15,9 @@ if (! isAuthenticated()){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <style>
+    
+    </style>
     <title>home</title>
 </head>
 <body>
@@ -34,6 +36,21 @@ if (! isAuthenticated()){
         </div>
         
     </div>
-    <span>heloo</span>
+    <div id="myDIV" class="header">
+        <h2>My To Do List</h2>
+        <form method="POST" action="../todo/create.php">
+            <input type="text" name="text" id="myInput" placeholder="Title...">
+            <button type="submit" name="submit">Add</button>
+        </form>
+    </div>
+    
+  </div>
+    <ul id="todolist">
+    <li>Hit the gym</li>
+    <li>Meet George</li>
+    <li>Buy eggs</li>
+    <li>Read a book</li>
+    <li>Organize office</li>
+    </ul>
 </body>
 </html>
