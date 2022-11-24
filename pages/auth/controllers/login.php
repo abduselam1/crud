@@ -42,7 +42,7 @@ if (count($_POST) != 2) {
                 $_SESSION['authenticated'] = true;
                 header("location:crud/pages/home");
             } else {
-                echo "Password doen't match";
+                echo "Password doesn't match";
             }
         } else {
             echo "User not found";
