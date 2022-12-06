@@ -1,6 +1,6 @@
 <?php
 
-$database = new mysqli('127.0.0.1','root','crud','crud');
+$database = new mysqli('mysql','root','crud123','crud');
 
 if ($database->connect_errno) {
     echo "connection faild";
