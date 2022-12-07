@@ -10,11 +10,11 @@ $users = $database->query($query);
 
 if (!isAuthenticated()) {
     // echo $_SESSION['authenticated'];
-    return header("location:/crud/pages/auth/login.php");
+    return header("location:pages/auth/login.php");
 }
 
 if (!isAdmin($database)) {
-    return header("location:/crud/pages/home/");
+    return header("location:/pages/home/");
 }
 ?>
 
