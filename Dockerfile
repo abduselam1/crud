@@ -15,10 +15,15 @@
 
 FROM php:7.4-apache
 
-COPY . /var/www/html/
+# COPY ./php/src/pages /var/www/html/
 
 WORKDIR /var/www/html/
 
+# RUN apt-get update && apt-get upgrade
+
+# RUN docker-php-ext-install mysqli
+
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 # COPY . .
 
-EXPOSE 4000
+EXPOSE 8000

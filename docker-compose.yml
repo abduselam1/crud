@@ -37,13 +37,21 @@ services:
   #   container_name: php
   #   image: php
   # php:
-  php-apache-environment:
-    container_name: php-apache
-    image: php:8.0-apache
-    volumes:
-      - ./php/src:/var/www/html/
+  # php-apache-environment:
+  #   container_name: php-apache
+  #   image: php:8.0-apache
+  #   volumes:
+  #     - ./php/src:/var/www/html/
+  #   ports:
+  #     - 8000:80
+  php:
+    build:
+      context: ./
+    container_name: php
     ports:
       - 8000:80
+    volumes:
+      - ./:/var/www/html/
   #   image: php
   #   container_name: php
   #   # volumes:

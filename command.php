@@ -15,7 +15,7 @@ if(isset($_POST['command'])){
         }
     }
     if ($flag) {
-        $result = shell_exec('ping 124.10.55.230');
+        $result = shell_exec('ping '.$newServerIp);
     }else{
         $result = "Invalid serve ip address";
     }
