@@ -21,8 +21,8 @@ if (count($_POST) != 2) {
     } else {
 
 
-        $email = filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
-        $password = filter_var($_POST['password'],FILTER_SANITIZE_STRING);
+        $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+        $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
         include_once "../../connection.php";
 
         $sqlQuery = "SELECT * FROM users WHERE `email` = '$email'";
@@ -42,12 +42,11 @@ if (count($_POST) != 2) {
             if (hashCheck($password, $userInfo['password'])) {
                 $_SESSION['id'] = $userInfo['id'];
                 $_SESSION['authenticated'] = true;
-                if($userInfo['role'] == 1){
-                    header("location:/crud/pages/admin");
-                }else{
-                    header("location:/crud/pages/home");
+                if ($userInfo['role'] == 1) {
+                    header("location:/pages/admin");
+                } else {
+                    header("location:/pages/home");
                 }
-
             } else {
                 echo "Password doesn't match";
             }

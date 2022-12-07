@@ -15,12 +15,13 @@ $todos = $database->query($query);
 $todo = $todos->fetch_assoc();
 
 if (!isAuthenticated()) {
-    return header("location:/crud/pages/auth/login.php");
+    return header("location:/pages/auth/login.php");
 }
 
 $id = $_SESSION['id'];
 
-// ?>
+// 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,10 +68,9 @@ $id = $_SESSION['id'];
 
                         <?php
                         while ($row  = $categories->fetch_assoc()) {
-                            if($row['id'] == $todo['category_id']){
+                            if ($row['id'] == $todo['category_id']) {
                                 echo '<option value="' . $row['id'] . '"  selected  class="text-gray-600 font-semibold">' . $row['name'] . '</option>';
-
-                            }else{
+                            } else {
 
                                 echo '<option value="' . $row['id'] . '"   class="text-gray-600 font-semibold">' . $row['name'] . '</option>';
                             }
@@ -85,13 +85,13 @@ $id = $_SESSION['id'];
             </div>
         </form>
 
-        
 
 
 
-        
 
-        
+
+
+
 </body>
 
 </html>

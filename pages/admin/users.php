@@ -1,29 +1,29 @@
 <?php
-    session_start();
-    include_once '../functions.php';
-    include_once '../connection.php';
+session_start();
+include_once '../functions.php';
+include_once '../connection.php';
 
 
-    if (!isAuthenticated()) {
-        // echo $_SESSION['authenticated'];
-        return header("location:/crud/pages/auth/login.php");
-    }
-    
-    if (!isAdmin($database)) {
-        return header("location:/crud/pages/home/");
-    }
+if (!isAuthenticated()) {
+    // echo $_SESSION['authenticated'];
+    return header("location:/pages/auth/login.php");
+}
 
-    $userid = $_GET['userId'];
-    
-    $userQuery = "SELECT * FROM users WHERE id = $userid LIMIT 1";
+if (!isAdmin($database)) {
+    return header("location:/pages/home/");
+}
 
-    $user = $database->query($userQuery);
+$userid = $_GET['userId'];
 
-    $user = $user->fetch_assoc();
+$userQuery = "SELECT * FROM users WHERE id = $userid LIMIT 1";
 
-    $todoQuery = "SELECT todos.id as todoID, todos.*,category.* FROM todos INNER JOIN category ON todos.category_id = category.id WHERE user_id = ".$user['id'];
+$user = $database->query($userQuery);
 
-    $todos = $database->query($todoQuery);
+$user = $user->fetch_assoc();
+
+$todoQuery = "SELECT todos.id as todoID, todos.*,category.* FROM todos INNER JOIN category ON todos.category_id = category.id WHERE user_id = " . $user['id'];
+
+$todos = $database->query($todoQuery);
 
 
 ?>
@@ -31,6 +31,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,6 +42,7 @@
     <title>Admin | user - <?php echo $user['name']; ?></title>
 
 </head>
+
 <body>
 
     <div class="sticky top-0 left-0 px-5 py-2 bg-gray-700 w-full flex justify-between">
@@ -65,13 +67,13 @@
     <div class="mx-auto md:max-w-3xl sm:max-w-xl w-full px-5 sm:px-0">
 
         <div class="mt-10">
-                <?php
-                if ($todos->num_rows != 0) {
-                    echo '<span class="font-semibold text-gray-500"> Todos</span>';
-    
-                    while ($row = $todos->fetch_assoc()) {
-    
-                        echo '<div class=" group rounded-xl border border-gray-500 px-5 py-3 mt-3">
+            <?php
+            if ($todos->num_rows != 0) {
+                echo '<span class="font-semibold text-gray-500"> Todos</span>';
+
+                while ($row = $todos->fetch_assoc()) {
+
+                    echo '<div class=" group rounded-xl border border-gray-500 px-5 py-3 mt-3">
                         <div class="flex justify-between">
                             <span class="text-xl font-bold text-gray-800">' . $row['title'] . '</span>
                             <span class="text-sm font-semibold text-gray-600">' . $row['name'] . '</span>
@@ -83,7 +85,7 @@
                             
                             <div class="pr-5 cursor-pointer">
                                 <form action="controller/delete.php" method="POST">
-                                    <input type="text" name="id" value="'.$row['todoID'].'" hidden>
+                                    <input type="text" name="id" value="' . $row['todoID'] . '" hidden>
     
                                     <button type="submit">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 hover:text-blue-500">
@@ -97,18 +99,19 @@
                         </div>
         
                     </div>';
-                    }
-                }else{
-
-                    echo "<span>No todo found</span>";
                 }
-    
-                ?>
-    
-            </div>
+            } else {
+
+                echo "<span>No todo found</span>";
+            }
+
+            ?>
+
+        </div>
     </div>
 
-    
+
 
 </body>
+
 </html>

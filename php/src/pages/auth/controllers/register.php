@@ -17,28 +17,28 @@ if (count($_POST) != 3) {
         echo "Invalid email address";
     } else if (!isset($_POST['password']) || $_POST['password'] == '') {
         echo "Invalid password address";
-    } else if(!isset($_POST['name']) || $_POST['name'] == ''){
+    } else if (!isset($_POST['name']) || $_POST['name'] == '') {
         echo  "Invalid name";
-    }else {
+    } else {
 
         $email = $_POST['email'];
         $password = $_POST['password'];
         $name = $_POST['name'];
-        
+
         include_once "../../connection.php";
 
         $sqlQuery = "SELECT * FROM users WHERE `email` = '$email'";
         $row_value = $database->query($sqlQuery);
 
-        
+
         $count = $row_value->fetch_assoc();
-        if(!empty($count) == 1){
+        if (!empty($count) == 1) {
             $count;
-        }else{
+        } else {
 
             $password = hashMake($password);
-            $query ="INSERT INTO `users` (name,email,password,role) values ('$name','$email','$password','2')";
-            echo($query);
+            $query = "INSERT INTO `users` (name,email,password,role) values ('$name','$email','$password','2')";
+            echo ($query);
             $row_value = $database->query($query);
             if ($row_value) {
                 $sqlQuery = "SELECT * FROM users WHERE `email` = '$email'";
@@ -54,14 +54,13 @@ if (count($_POST) != 3) {
                 }
                 $_SESSION['id'] = $userInfo['id'];
                 $_SESSION['authenticated'] = true;
-                header("location:/crud/pages/home");
-
-            }else{
+                header("location:/pages/home");
+            } else {
                 echo $row_value;
             }
         }
-        
+
         // var_dump($userInfo);
-        
+
     }
 }

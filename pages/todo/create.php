@@ -4,7 +4,7 @@
 
     session_start();
     if (! isAuthenticated()){
-        return header("location:/crud/pages/auth/login.php");
+        return header("location:/pages/auth/login.php");
     }
 
     if (count($_POST) != 1) {
@@ -23,9 +23,3 @@
 
         }
     }
-    
-
-
-
-
-?>

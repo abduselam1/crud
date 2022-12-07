@@ -10,7 +10,7 @@ $categories = $database->query($query);
 
 if (!isAuthenticated()) {
     // echo $_SESSION['authenticated'];
-    return header("location:/crud/pages/auth/login.php");
+    return header("location:/pages/auth/login.php");
 }
 
 $id = $_SESSION['id'];
@@ -22,13 +22,14 @@ $unpinnedTodos  = $database->query($unpinnedQuery);
 // while ($row  = $unpinnedTodos->fetch_assoc()) {
 //         print_r($row);
 //         echo "<br><br>";
-    
+
 //     }
 //     // var_dump($pinnedTodos->fetch_assoc());
 //     // print_r($unpinnedTodos->fetch_assoc());
 // // var_dump($pinnedTodos->num_rows);
 
-// ?>
+// 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -104,7 +105,7 @@ $unpinnedTodos  = $database->query($unpinnedQuery);
                         <div class="pr-5 cursor-pointer">
                             <form action="controller/pin.php" method="POST">
                                 <input type="checkbox" name="pinned" hidden>
-                                <input type="text" name="id" value="'.$row['todoID'].'" hidden>
+                                <input type="text" name="id" value="' . $row['todoID'] . '" hidden>
                                 <button type="submit">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 hover:text-blue-500">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l1.5 1.5.75-.75V8.758l2.276-.61a3 3 0 10-3.675-3.675l-.61 2.277H12l-.75.75 1.5 1.5M15 11.25l-8.47 8.47c-.34.34-.8.53-1.28.53s-.94.19-1.28.53l-.97.97-.75-.75.97-.97c.34-.34.53-.8.53-1.28s.19-.94.53-1.28L12.75 9M15 11.25L12.75 9" />
@@ -112,14 +113,14 @@ $unpinnedTodos  = $database->query($unpinnedQuery);
                                 </button>
                             </form>
                         </div>
-                        <a href="edit.php?id='.$row['todoID'].'" class="pr-5 cursor-pointer">
+                        <a href="edit.php?id=' . $row['todoID'] . '" class="pr-5 cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 hover:text-blue-500">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                             </svg>
                         </a>
                         <div class="pr-5 cursor-pointer">
                             <form action="controller/delete.php" method="POST">
-                                <input type="text" name="id" value="'.$row['todoID'].'" hidden>
+                                <input type="text" name="id" value="' . $row['todoID'] . '" hidden>
 
                                 <button type="submit">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 hover:text-blue-500">
@@ -150,8 +151,8 @@ $unpinnedTodos  = $database->query($unpinnedQuery);
                     <div class="flex justify-between">
                             
                         <div class="flex items-baseline">
-                            <span class="text-2xl font-bold text-gray-800 pr-3">'.$row['title'].'</span>
-                            <span class="text-sm font-semibold text-gray-500">'.$row['created_at'].'</span>
+                            <span class="text-2xl font-bold text-gray-800 pr-3">' . $row['title'] . '</span>
+                            <span class="text-sm font-semibold text-gray-500">' . $row['created_at'] . '</span>
 
                         </div>
                         <span class="text-sm font-semibold text-gray-600">' . $row['name'] . '</span>
@@ -162,7 +163,7 @@ $unpinnedTodos  = $database->query($unpinnedQuery);
                         <div class="pr-5 ">
                             <form action="controller/pin.php" method="POST">
                                 <input type="checkbox" name="pinned" checked hidden>
-                                <input type="text" name="id" value="'.$row['todoID'].'" hidden>
+                                <input type="text" name="id" value="' . $row['todoID'] . '" hidden>
 
                                 <button type="submit">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 hover:text-blue-500">
@@ -171,14 +172,14 @@ $unpinnedTodos  = $database->query($unpinnedQuery);
                                 </button>
                             </form>
                         </div>
-                        <a href="edit.php?id='.$row['todoID'].'" class="pr-5 cursor-pointer">
+                        <a href="edit.php?id=' . $row['todoID'] . '" class="pr-5 cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 hover:text-blue-500">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                             </svg>
                         </a>
                         <div class="pr-5 cursor-pointer">
                             <form action="controller/delete.php" method="POST">
-                                    <input type="text" name="id" value="'.$row['todoID'].'" hidden>
+                                    <input type="text" name="id" value="' . $row['todoID'] . '" hidden>
 
                                     <button type="submit">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 hover:text-blue-500">
@@ -197,7 +198,7 @@ $unpinnedTodos  = $database->query($unpinnedQuery);
 
         </div>
 
-        
+
 </body>
 
 </html>

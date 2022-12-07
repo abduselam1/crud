@@ -10,11 +10,11 @@ $users = $database->query($query);
 
 if (!isAuthenticated()) {
     // echo $_SESSION['authenticated'];
-    return header("location:/crud/pages/auth/login.php");
+    return header("location:/pages/auth/login.php");
 }
 
 if (!isAdmin($database)) {
-    return header("location:/crud/pages/home/");
+    return header("location:/pages/home/");
 }
 ?>
 
@@ -51,7 +51,7 @@ if (!isAdmin($database)) {
         </div>
 
     </div>
-    
+
     <div class="mt-5 max-w-3xl mx-auto bg-white rounded-xl ">
         <div class="w-full">
             <h1 class="text-center pt-10 text-3xl font-semibold">Users</h1>
@@ -66,16 +66,16 @@ if (!isAdmin($database)) {
         </div>
 
         <?php
-            while($user = $users->fetch_assoc()){
-                echo '<div class="mt-5 px-5    py-5 bg-gray-100 rounded-full">
-                        <a href="users.php?userId='.$user['id'].'" class="flex justify-between">
-                            <span class="font-bold text-gray-800">'.$user['name'].'</span>
+        while ($user = $users->fetch_assoc()) {
+            echo '<div class="mt-5 px-5    py-5 bg-gray-100 rounded-full">
+                        <a href="users.php?userId=' . $user['id'] . '" class="flex justify-between">
+                            <span class="font-bold text-gray-800">' . $user['name'] . '</span>
                             <p>4</p>
                         </a>
                     </div>';
-            }
+        }
         ?>
-        
+
     </div>
 </body>
 

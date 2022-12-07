@@ -2,4 +2,4 @@
 session_start();
 session_destroy();
 
-return header("location:/crud/pages/auth/login.php");
+return header("location:/pages/auth/login.php");

@@ -1,16 +1,15 @@
-
 <?php
 session_start();
 include_once '../functions.php';
-if ( isAuthenticated()){
+if (isAuthenticated()) {
     // echo $_SESSION['authenticated'];
-return header("location:/crud/pages/home");
-
+    return header("location:/pages/home");
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +17,8 @@ return header("location:/crud/pages/home");
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
-<body class=" bg-gray-500">    
+
+<body class=" bg-gray-500">
     <div class="max-w-xl mx-auto bg-white rounded-lg shadow-sm mt-10">
         <h3 class="text-4xl text-red-700 font-semibold text-center py-10">Register</h3>
 
@@ -36,10 +36,10 @@ return header("location:/crud/pages/home");
             <div class="mb-3">
                 <input type="password" class="w-full focus:outline-blue-500 p-2 rounded-lg" name="password" placeholder="*******">
             </div>
-            
+
 
             <div class="mt-5 w-full">
-                <button class="w-full font-semibold text-gray-50 rounded-lg shadow-sm bg-orange-500 py-2" >Register</button>
+                <button class="w-full font-semibold text-gray-50 rounded-lg shadow-sm bg-orange-500 py-2">Register</button>
             </div>
         </form>
         <div class="px-20 pb-5">
@@ -47,4 +47,5 @@ return header("location:/crud/pages/home");
         </div>
     </div>
 </body>
+
 </html>

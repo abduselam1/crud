@@ -13,7 +13,7 @@
 
 
 
-FROM php:7.4-apache
+FROM php:8.0-apache
 
 # COPY ./php/src/pages /var/www/html/
 
